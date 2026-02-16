@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agentbrowser"
+version = "0.1.0"
+description = "Give your AI agents a real browser. Playwright-based, stealth-mode, with smart element finding and LLM-friendly page summaries."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Ander Turing", email = "anderturing@gmail.com" },
+]
+keywords = ["ai", "agents", "browser", "automation", "playwright", "llm", "scraping"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: Browsers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Framework :: AsyncIO",
+]
+dependencies = [
+    "playwright>=1.40.0",
+    "playwright-stealth>=1.0.6",
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "httpx>=0.25.0",
+]
+
+[project.scripts]
+agentbrowser = "agentbrowser.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/anderturing-debug/agentbrowser"
+Repository = "https://github.com/anderturing-debug/agentbrowser"
+Issues = "https://github.com/anderturing-debug/agentbrowser/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agentbrowser"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "pytest-cov>=4.0",
+    "ruff>=0.1.0",
+]
