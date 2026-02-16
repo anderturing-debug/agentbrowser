@@ -6,12 +6,14 @@ import asyncio
 import random
 from typing import TYPE_CHECKING
 
-from playwright_stealth import stealth_async  # type: ignore[import-untyped]
+from playwright_stealth import Stealth  # type: ignore[import-untyped]
 
 from .config import StealthConfig
 
 if TYPE_CHECKING:
     from playwright.async_api import BrowserContext, Page
+
+_stealth = Stealth()
 
 # Realistic user agents (Chrome on various platforms)
 USER_AGENTS = [
@@ -30,7 +32,7 @@ def random_user_agent() -> str:
 
 async def apply_stealth(page: Page) -> None:
     """Apply playwright-stealth patches to a page."""
-    await stealth_async(page)
+    await _stealth.apply_stealth_async(page)
 
 
 async def apply_context_stealth(context: BrowserContext) -> None:

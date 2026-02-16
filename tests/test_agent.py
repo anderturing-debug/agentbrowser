@@ -81,7 +81,7 @@ async def test_click_element():
     """Test clicking an element by text."""
     async with BrowserAgent(headless=True) as agent:
         await agent.goto("https://example.com")
-        await agent.click("More information")
+        await agent.click("Learn more")
         # Should navigate to IANA
         assert "iana" in agent.url.lower()
 

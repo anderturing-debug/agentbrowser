@@ -9,8 +9,8 @@ async def test_find_by_text():
     """Test finding elements by text content."""
     async with BrowserAgent(headless=True) as agent:
         await agent.goto("https://example.com")
-        # "More information..." link should be findable
-        await agent.click("More information")
+        # "Learn more..." link should be findable
+        await agent.click("Learn more")
         assert "iana" in agent.url.lower()
 
 
